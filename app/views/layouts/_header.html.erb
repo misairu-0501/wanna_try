@@ -1,0 +1,54 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Wanna Try</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li>
+            <p class='nav-link text-light'>「user」</p>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+            <p class='nav-link text-light'>「admin」</p>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to root_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> Top
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link"></i> about
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
