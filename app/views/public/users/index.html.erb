@@ -1,0 +1,17 @@
+<h2>ユーザー一覧</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>画像</th>
+    <th>ニックネーム</th>
+    <th>フォロー数</th>
+    <th>フォロワー数</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td></td>
+      <td><%=link_to user.name, user_path(user) %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>

@@ -12,6 +12,16 @@
             <p class='nav-link text-light'>「user」</p>
           </li>
           <li>
+            <%= link_to my_page_user_path(current_user),class: 'nav-link text-light' do %>
+              <i></i> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path,class: 'nav-link text-light' do %>
+              <i></i> ユーザー一覧
+            <% end %>
+          </li>
+          <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>

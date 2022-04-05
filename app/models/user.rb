@@ -7,3 +7,4 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   attribute :is_deleted, :boolean, default: false
 end
+

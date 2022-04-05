@@ -12,5 +12,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+    resources :users, only:[:edit, :index, :show, :update] do
+      member do
+        get 'my_page'
+      end
+    end
   end
 end
