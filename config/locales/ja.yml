@@ -1,0 +1,6 @@
+ja:
+  enums:
+    child:
+      gender:
+        boy: "男の子"
+        girl: "女の子"

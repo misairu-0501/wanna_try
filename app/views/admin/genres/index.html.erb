@@ -4,7 +4,7 @@
   <%= render 'layouts/errors', obj: @genre %>
 </div>
 
-<%= form_with model: @genre, url: admin_genres_path, method: :paost, local: true do |f| %>
+<%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
  <table>
    <tr>
      <td><%= f.label :name, "ジャンル名" %></td>

@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
 
   def my_page
     @user = User.find(params[:id])
+    @children = @user.children
   end
 
   def edit

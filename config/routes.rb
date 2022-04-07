@@ -22,5 +22,6 @@ Rails.application.routes.draw do
         get 'my_page'
       end
     end
+    resources :children, only:[:new, :create, :edit, :update]
   end
 end
