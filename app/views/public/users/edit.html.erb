@@ -1,4 +1,9 @@
 <h2>ユーザー情報編集画面</h2>
+
+<div id="error">
+  <%= render 'layouts/errors', obj: @user %>
+</div>
+
 <%= form_with model: @user, local: true do |f| %>
   <div class="form-group">
     <%= f.label "ニックネーム" %>
