@@ -31,6 +31,11 @@
             <p class='nav-link text-light'>「admin」</p>
           </li>
           <li>
+            <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+              <i></i>ジャンル一覧
+            <% end %>
+          </li>
+          <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>

@@ -1,0 +1,15 @@
+<h1>ジャンル編集</h1>
+
+<div id="error">
+  <%= render 'layouts/errors', obj: @genre %>
+</div>
+
+<%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
+  <table>
+    <tr>
+      <td><%= f.label :name, "ジャンル名" %></td>
+      <td><%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %></td>
+      <td><%= f.submit "変更を保存" %></td>
+    </tr>
+  </table>
+<% end %>
