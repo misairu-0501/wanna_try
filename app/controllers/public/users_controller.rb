@@ -12,7 +12,8 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to my_page_user_path(@user), notice: "ユーザー情報を更新しました。"
+      flash[:notice] = "ユーザー情報を更新しました。"
+      redirect_to my_page_user_path(@user)
     else
       render :edit
     end
@@ -35,6 +36,7 @@ class Public::UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
+      flash[:alert] = "他のユーザーの編集はできません"
       redirect_to my_page_user_path(current_user)
     end
   end

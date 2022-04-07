@@ -1,6 +1,5 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  protect_from_forgery
 
   def index
     @genre = Genre.new
@@ -10,7 +9,8 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to request.referer, notice: "ジャンルを追加しました"
+      flash[:notice] = "ジャンルを追加しました"
+      redirect_to request.referer
     else
       # @genre = Genre.new
       @genres = Genre.all
@@ -25,7 +25,8 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admin_genres_path, notice: "ジャンルを更新しました"
+      flash[:notice] = "ジャンルを更新しました"
+      redirect_to admin_genres_path
     else
       render :edit
     end
