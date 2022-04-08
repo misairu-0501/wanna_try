@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
       <h2>投稿詳細</h2>
       <table class="table">
         <tr>
@@ -32,14 +32,29 @@
       <p><strong>説明</strong></p>
       <p><%= @post.body %></p>
 
+      <p><%= @post.post_comments.count %>コメント</p>
+
       <% if @post.user == current_user %>
         <%= link_to "編集", edit_post_path(@post) %><br>
         <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
 
       <% end %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <h2>コメント</h2>
+      <% @post.post_comments.each do |post_comment| %>
+        <%= post_comment.user.name %>
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= post_comment.comment %><br>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "削除しますか？"} %><br>
+        <% end %>
+      <% end %>
+
+      <%= form_with model: [@post, @post_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control" %><br>
+        <%= f.submit "送信する" %>
+      <% end %>
     </div>
   </div>
 </div>

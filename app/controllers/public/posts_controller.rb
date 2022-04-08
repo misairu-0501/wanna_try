@@ -46,8 +46,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @genres = Genre.all
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def destroy

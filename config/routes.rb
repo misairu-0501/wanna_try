@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       end
     end
     resources :children, only:[:new, :create, :edit, :update]
-    resources :posts, only:[:new, :create, :edit, :update, :index, :show, :destroy]
+    resources :posts, only:[:new, :create, :edit, :update, :index, :show, :destroy] do
+      resources :post_comments, only:[:create, :destroy]
+    end
   end
 end

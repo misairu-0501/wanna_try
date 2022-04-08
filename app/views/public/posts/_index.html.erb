@@ -9,6 +9,7 @@
             <p>投稿者：<%= post.user.name %></p>
             <p>投稿日時：<%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
             <p>公開範囲：<%= Post.public_statuses_i18n[Post.public_statuses.key(post.public_status)] %></p>
+            <P><%= post.post_comments.count %>コメント</P>
           <% end %>
         <% end %>
       </div>
