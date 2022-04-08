@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :child
   belongs_to :genre
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :post_image
 
@@ -17,5 +18,10 @@ class Post < ApplicationRecord
   #投稿画像の取得
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.png'
+  end
+
+  #userが「いいね」しているかどうかしらべる(存在していればtrue)
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end

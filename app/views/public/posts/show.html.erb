@@ -32,12 +32,27 @@
       <p><strong>説明</strong></p>
       <p><%= @post.body %></p>
 
+      <!--コメント-->
       <p><%= @post.post_comments.count %>コメント</p>
+
+      <!--いいね-->
+      <% if @post.favorited_by?(current_user) %>
+        <p>
+          <%= link_to post_favorites_path(@post), method: :delete do %>
+            ♥<%= @post.favorites.count %>いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to post_favorites_path(@post), method: :post do %>
+            ♡<%= @post.favorites.count %>いいね
+          <% end %>
+        </p>
+      <% end %>
 
       <% if @post.user == current_user %>
         <%= link_to "編集", edit_post_path(@post) %><br>
         <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
-
       <% end %>
     </div>
     <div class="col-md-4">

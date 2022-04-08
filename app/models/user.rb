@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :children, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   attribute :is_deleted, :boolean, default: false
