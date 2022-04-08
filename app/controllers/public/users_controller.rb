@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:my_page, :edit, :update]
 
   def my_page
@@ -25,6 +26,14 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    #カレントユーザーの場合は自分の全ての投稿を閲覧可能
+    #他のユーザーの投稿はpublic_statusesが「全て」の場合のみ閲覧可能
+    if @user == current_user
+      @posts = @user.posts
+    else
+      @posts = @user.posts.where(public_status: Post.public_statuses[:range_all])
+    end
   end
 
   private

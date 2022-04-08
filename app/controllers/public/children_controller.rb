@@ -1,5 +1,6 @@
 class Public::ChildrenController < ApplicationController
-  before_action :ensure_correct_user
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only:[:edit, :update]
 
   def new
     @child = Child.new

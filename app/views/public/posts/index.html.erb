@@ -1,0 +1,15 @@
+<div class = "container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/posts/genre_search', genres: @genres %>
+    </div>
+    <div class="col-md-10">
+      <% if params[:id] %>
+        <h2>「<%= @genre.name %>」投稿一覧（全<%= @posts.count%>件）</h2>
+      <% else %>
+        <h2>投稿一覧（全<%= @posts.count%>件）</h2>
+      <% end %>
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

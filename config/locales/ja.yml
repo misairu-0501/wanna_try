@@ -4,3 +4,8 @@ ja:
       gender:
         boy: "男の子"
         girl: "女の子"
+    post:
+      public_status:
+        range_all: "全体"
+        range_group: "グループまで"
+        range_myself: "自分のみ"

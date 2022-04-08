@@ -1,0 +1,45 @@
+<div class = "container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>投稿詳細</h2>
+      <table class="table">
+        <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>お名前</th>
+          <td><%= @post.child.name %></td>
+        </tr>
+        <tr>
+          <th>お年</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>投稿者</th>
+          <td><%= @post.user.name %></td>
+        </tr>
+        <tr>
+          <th>投稿日時</th>
+          <td><%= @post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+        </tr>
+        <tr>
+          <th>公開範囲</th>
+          <td><%= Post.public_statuses_i18n[Post.public_statuses.key(@post.public_status)] %></td>
+        </tr>
+      </table>
+      <%= image_tag @post.get_post_image, size:'600x400' %>
+      <p><strong>説明</strong></p>
+      <p><%= @post.body %></p>
+
+      <% if @post.user == current_user %>
+        <%= link_to "編集", edit_post_path(@post) %><br>
+        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <h2>コメント</h2>
+    </div>
+  </div>
+</div>

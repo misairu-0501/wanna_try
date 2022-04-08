@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :children, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   attribute :is_deleted, :boolean, default: false

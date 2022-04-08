@@ -1,0 +1,52 @@
+<h2>投稿編集</h2>
+
+<div id="error">
+  <%= render 'layouts/errors', obj: @post %>
+</div>
+
+<%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :title, "タイトル" %></th>
+      <td><%= f.text_field :title, placeholder: "投稿のタイトル", class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :child_id, "お名前" %></th>
+      <td><%= f.select :child_id, options_from_collection_for_select(current_user.children.all, :id, :name), {}, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :genre_id, "ジャンル" %></th>
+      <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {}, class:"form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :shooting_date, "写真撮影日" %></th>
+      <td><%= f.date_field :shooting_date, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :body, "説明" %></th>
+      <td><%= f.text_area :body, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :post_image, "投稿画像" %></th>
+      <td><%= f.file_field :post_image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :public_status, "公開範囲" %></th>
+      <td>
+        <span class="pl-3">
+          <%= f.radio_button :public_status, "0" %>
+          <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(0)] %>
+        </span>
+        <span class="pl-3">
+          <%= f.radio_button :public_status, "1" %>
+          <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(1)] %>
+        </span>
+        <span class="pl-3">
+          <%= f.radio_button :public_status, "2" %>
+          <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(2)] %>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <%= f.submit "編集を保存する" %>
+<% end %>

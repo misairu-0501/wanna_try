@@ -23,5 +23,6 @@ Rails.application.routes.draw do
       end
     end
     resources :children, only:[:new, :create, :edit, :update]
+    resources :posts, only:[:new, :create, :edit, :update, :index, :show, :destroy]
   end
 end
