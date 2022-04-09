@@ -1,21 +1,26 @@
-<h2>ユーザー情報編集画面</h2>
+<div class="container">
+  <h2>ユーザー情報編集画面</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div id="error">
+        <%= render 'layouts/errors', obj: @user %>
+      </div>
 
-<div id="error">
-  <%= render 'layouts/errors', obj: @user %>
+      <%= form_with model: @user, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label "ニックネーム" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "メールアドレス" %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "編集を保存する", class: "btn btn-main" %>
+          <%= link_to "マイページへ戻る", my_page_user_path(current_user), class: "d-flex justify-content-end" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= form_with model: @user, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label "ニックネーム" %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label "メールアドレス" %>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "編集を保存する" %>
-  </div>
-<% end %>
-
 

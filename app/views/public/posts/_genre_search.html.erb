@@ -1,14 +1,14 @@
 <table class="table table-borderless border mt-4">
   <thead class="text-center">
     <tr class="border-bottom">
-      <td>ジャンル検索</td>
+      <td class="table-heading">ジャンル検索</td>
     </tr>
   </thead>
   <tbody>
     <% genres.each do |genre| %>
       <tr>
         <td>
-          <%= link_to posts_path(id: genre.id),class: 'text-decoration-none' do %>
+          <%= link_to posts_path(id: genre.id) do %>
             <span><%= genre.name %></span>
           <% end %>
         </td>

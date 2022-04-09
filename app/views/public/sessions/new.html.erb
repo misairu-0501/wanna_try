@@ -1,21 +1,27 @@
-<h2>ログイン</h2>
-<p>会員の方はこちらからログイン</p>
-<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-  </div>
+<div class="container">
+  <h2>ログイン</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h3>会員の方はこちらからログイン</h3>
+      <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <div class="field mt-3">
+          <%= f.label :email, "メールアドレス" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+        <div class="field mt-3">
+          <%= f.label :password, "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
 
-  <div class="actions mt-3">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
+        <div class="actions mt-3 d-flex justify-content-center">
+          <%= f.submit "ログイン", class: "btn btn-main btn-block" %>
+        </div>
+      <% end %>
 
-<p class="mt-3">会員登録がお済みでない方</p>
-<%= render "public/shared/links" %>
+      <h3 class="mt-3">会員登録がお済みでない方</h3>
+      <p class="mt-5 text-center"><%= render "public/shared/links" %></p>
+    </div>
+  </div>
+</div>

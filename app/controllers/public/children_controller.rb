@@ -33,6 +33,13 @@ class Public::ChildrenController < ApplicationController
     end
   end
 
+  def destroy
+    @child = Child.find(params[:id])
+    @child.destroy
+    flash[:notice] = "お子さんのデータを削除しました"
+    redirect_to my_page_user_path(current_user)
+  end
+
   private
 
   def child_params

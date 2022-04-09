@@ -1,8 +1,21 @@
-<p>Welcome to Wanna Try!</p>
-<p>自分の子供のおすすめを投稿したり、</p>
-<P>他のご家庭のお子さんのおすすめを</P>
-<P>閲覧できるコミュニティサイトです。</P>
-<P>子供のおすすめをみんなで共有しましょう！</P>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <p>何かしら写真を入れる</p>
+    </div>
+    <div class="col-lg-6 mx-auto">
+      <h2>Welcome to Wanna Try!</h2>
+      <p class="mt-3">自分の子供のおすすめを投稿したり、</p>
+      <P class="mt-3">他のご家庭のお子さんのおすすめを</P>
+      <P class="mt-3">閲覧できるコミュニティサイトです。</P>
+      <P class="mt-3">子供のおすすめをみんなで共有しましょう！</P>
 
-<%= link_to "新規登録", new_user_registration_path %><br>
-<%= link_to"ログイン", new_user_session_path %>
+      <div class="mt-3 d-flex justify-content-center">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-main btn-block" %><br>
+      </div>
+      <div class="mt-3 d-flex justify-content-center">
+        <%= link_to"ログイン", new_user_session_path, class: "btn btn-main btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>

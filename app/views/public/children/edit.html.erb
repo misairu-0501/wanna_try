@@ -1,23 +1,30 @@
-<h2>お子様の編集</h2>
+<div class="container">
+  <h2>お子様の編集</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
 
-<div id="error">
-  <%= render 'layouts/errors', obj: @child %>
+      <div id="error">
+        <%= render 'layouts/errors', obj: @child %>
+      </div>
+
+      <%= form_with model: @child, url: child_path(@child), method: :patch, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= f.label :name, "お名前" %></th>
+            <td><%= f.text_field :name, placeholder: "お子さんのお名前", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :birthday, "お誕生日" %></th>
+            <td><%= f.date_field :birthday, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :gender, "性別" %></th>
+            <td><%= f.select :gender, Child.genders.keys.map{|k| [I18n.t("enums.child.gender.#{k}"), k]}, {}, class: "form-control" %></td>
+          </tr>
+        </table>
+        <%= f.submit "編集を保存する",class: "btn btn-main" %>
+        <%= link_to "マイページへ戻る", my_page_user_path(current_user), class: "d-flex justify-content-end" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= form_with model: @child, url: child_path(@child), method: :patch, local: true do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :name, "お名前" %></th>
-      <td><%= f.text_field :name, placeholder: "お子さんのお名前", class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :birthday, "お誕生日" %></th>
-      <td><%= f.date_field :birthday, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :gender, "性別" %></th>
-      <td><%= f.select :gender, Child.genders.keys.map{|k| [I18n.t("enums.child.gender.#{k}"), k]}, {}, class: "form-control" %></td>
-    </tr>
-  </table>
-  <%= f.submit "編集を保存する" %>
-<% end %>

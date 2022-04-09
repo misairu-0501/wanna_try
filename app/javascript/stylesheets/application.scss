@@ -1,2 +1,52 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// Bootstrapのボタン色を変更
+// primary
+.btn-main {
+    background: #ffbf1f; //ボタンの背景色
+    color: #ffffff; //ボタンのテキストの色
+    border: 1px solid #ffbf1f;
+}
+
+.btn-main:hover, .btn-main:focus,
+.btn-main:active, .btn-main:active:focus, .btn-main:active:hover, .btn-main:active.focus,
+.btn-main.active, .btn-main.active:focus, .btn-main.active:hover, .btn-main.active.focus,
+.open > .dropdown-toggle.btn-main,
+.open > .dropdown-toggle.btn-main:hover,
+.open > .dropdown-toggle.btn-main:focus,
+.open > .dropdown-toggle.btn-main.focus,
+.btn-main.disabled:hover, .btn-main[disabled]:hover, fieldset[disabled] .btn-main:hover,
+.btn-main.disabled:focus, .btn-main[disabled]:focus, fieldset[disabled] .btn-main:focus,
+.btn-main.disabled.focus, .btn-main[disabled].focus, fieldset[disabled] .btn-main.focus {
+    background: #ff9933; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border: 1px solid #ff9933;
+}
+
+.btn-outline-main {
+    background: #ffffff; //ボタンの背景色
+    color: #ffbf1f; //ボタンのテキストの色
+    border: 1px solid #ffbf1f;
+}
+
+.btn-outline-main:hover, .btn-outline-main:focus,
+.btn-outline-main:active, .btn-outline-main:active:focus, .btn-outline-main:active:hover, .btn-outline-main:active.focus,
+.btn-outline-main.active, .btn-outline-main.active:focus, .btn-outline-main.active:hover, .btn-outline-main.active.focus,
+.open > .dropdown-toggle.btn-outline-main,
+.open > .dropdown-toggle.btn-outline-main:hover,
+.open > .dropdown-toggle.btn-outline-main:focus,
+.open > .dropdown-toggle.btn-outline-main.focus,
+.btn-outline-main.disabled:hover, .btn-outline-main[disabled]:hover, fieldset[disabled] .btn-outline-main:hover,
+.btn-outline-main.disabled:focus, .btn-outline-main[disabled]:focus, fieldset[disabled] .btn-outline-main:focus,
+.btn-outline-main.disabled.focus, .btn-outline-main[disabled].focus, fieldset[disabled] .btn-outline-main.focus {
+    background: #ff9933; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border: 1px solid #ff9933;
+}
+
+// Bootstrapのボタン色を変更
+.table-heading {
+  background: #92cb97;
+  color: #ffffff;
+}
