@@ -21,6 +21,12 @@ Rails.application.routes.draw do
       member do
         get 'my_page'
       end
+      resource :relationships, only:[:create, :destroy] do
+        member do
+          get 'followings'
+          get 'followers'
+        end
+      end
     end
     resources :children, only:[:new, :create, :edit, :update]
     resources :posts, only:[:new, :create, :edit, :update, :index, :show, :destroy] do
