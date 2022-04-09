@@ -16,6 +16,10 @@
           <%= f.text_field :email, class: "form-control" %>
         </div>
         <div class="form-group">
+          <%= f.label "プロフィール画像" %>
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
           <%= f.submit "編集を保存する", class: "btn btn-main" %>
           <%= link_to "マイページへ戻る", my_page_user_path(current_user), class: "d-flex justify-content-end" %>
         </div>

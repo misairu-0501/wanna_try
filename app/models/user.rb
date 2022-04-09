@@ -14,8 +14,15 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed # 自分がフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower # 自分をフォローしている人(自分がフォローされている人)
 
+  has_one_attached :profile_image
+
   validates :name, presence: true, uniqueness: true
   attribute :is_deleted, :boolean, default: false
+
+  #プロフィール画像の取得
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_profile_image.jpg'
+  end
 
   #フォローしたときの処理
   def follow(user_id)

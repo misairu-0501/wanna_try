@@ -2,32 +2,7 @@
   <h2>ユーザー一覧</h2>
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <table class="table">
-        <tr>
-          <th class="table-header">画像</th>
-          <th class="table-header">ニックネーム</th>
-          <th class="table-header">フォロー数</th>
-          <th class="table-header">フォロワー数</th>
-          <th class="table-header"></th>
-        </tr>
-        <% @users.each do |user| %>
-          <tr>
-            <td></td>
-            <td><%= link_to user.name, user_path(user) %></td>
-            <td><%= link_to user.followings.count, followings_user_relationships_path(user) %></td>
-            <td><%= link_to user.followers.count, followers_user_relationships_path(user) %></td>
-            <td>
-              <% if user != current_user %>
-                <% if current_user.following?(user) %>
-                  <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-main" %>
-                <% else %>
-                  <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-main" %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+      <%= render 'public/users/index', users: @users %>
     </div>
   </div>
 </div>
