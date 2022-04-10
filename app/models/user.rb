@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed # 自分がフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower # 自分をフォローしている人(自分がフォローされている人)
 
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+
   has_one_attached :profile_image
 
   validates :name, presence: true, uniqueness: true

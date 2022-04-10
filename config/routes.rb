@@ -33,5 +33,16 @@ Rails.application.routes.draw do
       resources :post_comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
     end
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
+      member do
+        get 'invitation_page'
+        post 'invitation'
+        patch 'join'
+        delete 'reject_invitation'
+        delete 'leave'
+        delete 'cancel_invitation'
+        delete 'forced_leave'
+      end
+    end
   end
 end

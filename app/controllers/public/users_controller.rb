@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   def my_page
     @user = User.find(params[:id])
     @children = @user.children
+    @groups = @user.groups
   end
 
   def edit
