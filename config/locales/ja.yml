@@ -9,3 +9,8 @@ ja:
         range_all: "全体"
         range_group: "グループまで"
         range_myself: "自分のみ"
+
+  activerecord:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"

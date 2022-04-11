@@ -36,7 +36,10 @@
         </tr>
       </table>
 
-      <%= link_to "ユーザー編集", edit_user_path(@user), class: "btn btn-main" %>
+      <!--ゲストユーザーの場合はユーザー編集を行えにようにする-->
+      <% if @user.name != "guestuser" %>
+        <%= link_to "ユーザー編集", edit_user_path(@user), class: "btn btn-main" %>
+      <% end %>
 
       <h3 class="mt-3">●お子さま一覧</h3>
       <%= render 'public/users/children', children: @children %>
