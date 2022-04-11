@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:my_page, :edit, :update]
+  before_action :ensure_correct_user, only: [:my_page, :edit, :update, :my_favorite]
 
   def my_page
     @user = User.find(params[:id])
@@ -37,6 +37,11 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def my_favorite
+    @user = User.find(params[:id])
+    @posts = @user.favorite_posts
+  end
+
   private
 
   def user_params
@@ -46,7 +51,7 @@ class Public::UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      flash[:alert] = "他のユーザーの編集はできません"
+      flash[:alert] = "他のユーザーの操作はできません"
       redirect_to my_page_user_path(current_user)
     end
   end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :users, only:[:edit, :index, :show, :update] do
       member do
         get 'my_page'
+        get 'my_favorite'
       end
       resource :relationships, only:[:create, :destroy] do
         member do
