@@ -40,7 +40,12 @@ class Public::UsersController < ApplicationController
 
   def my_favorite
     @user = User.find(params[:id])
-    @posts = @user.favorite_posts
+    @posts = []
+    @user.favorite_posts.each do |favorite_post|
+      if (favorite_post.public_status == 0) || (favorite_post.public_status == 1 && same_group?(@user.id, favorite_post.user_id))
+        @posts << favorite_post
+      end
+    end
   end
 
   private
@@ -56,11 +61,11 @@ class Public::UsersController < ApplicationController
       redirect_to my_page_user_path(current_user)
     end
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
+  end
 end

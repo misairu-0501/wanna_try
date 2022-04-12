@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only:[:edit, :update]
-  before_action :ensure_group_user, only:[:group_page]
+  before_action :ensure_group_owner, only:[:edit, :update, :invitation_page]
+  before_action :ensure_group_user, only:[:show, :group_page]
 
   #グループ作成画面を表示
   def index
@@ -173,10 +173,10 @@ class Public::GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
-  def ensure_correct_user
+  def ensure_group_owner
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
-      flash[:alert] = "グループのオーナーでないため編集できません"
+      flash[:alert] = "グループのオーナーでないと操作できません"
       redirect_to my_page_user_path(current_user)
     end
   end

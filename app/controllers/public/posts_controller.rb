@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only:[:edit, :update, :destroy]
+  before_action :ensure_public_status, only:[:show]
 
   def new
     @post = Post.new
@@ -67,6 +68,17 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
       flash[:alert] = "他のユーザーの投稿の編集はできません"
+      redirect_to my_page_user_path(current_user)
+    end
+  end
+
+  def ensure_public_status
+    @post = Post.find(params[:id])
+    if @post.public_status == 2 && @post.user != current_user
+      flash[:alert] = "公開範囲が「自分のみ」の他人の投稿は閲覧できません。"
+      redirect_to my_page_user_path(current_user)
+    elsif @post.public_status == 1 && (same_group?(current_user.id, @post.user_id) == false)
+      flash[:alert] = "公開範囲が「グループまで」で、同じグループに所属していない人の投稿は閲覧できません"
       redirect_to my_page_user_path(current_user)
     end
   end
