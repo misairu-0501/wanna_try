@@ -24,4 +24,12 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def age_calculation
+    shooting_date = self.shooting_date.strftime("%Y%m%d").to_i
+    birthday = Child.find(self.child_id).birthday.strftime("%Y%m%d").to_i
+    age = ((shooting_date - birthday) / 10000).floor
+
+    "#{age}歳"
+  end
 end
