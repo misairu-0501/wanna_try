@@ -1,8 +1,14 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only:[:edit, :update]
+  before_action :ensure_group_user, only:[:group_page]
 
   #グループ作成画面を表示
+  def index
+    @user = current_user
+    @groups = @user.groups
+  end
+
   def new
     @group = Group.new
   end
@@ -138,6 +144,29 @@ class Public::GroupsController < ApplicationController
     redirect_to group_path(group)
   end
 
+  #グループの投稿一覧を表示する
+  def group_page
+    @group = Group.find(params[:id])
+    @group_users = [] #グループ参加者(招待中は含めない)
+    @group_posts = [] #グループ参加者の投稿一覧
+
+    #グループの参加者を取得(招待中は含めない)
+    @group.users.each do |user|
+      if GroupUser.find_by(user_id: user.id).is_member == true
+        @group_users << user
+      end
+    end
+
+    #グループ参加者の投稿一覧(公開範囲「全体」「グループまで」のみ)
+    @group_users.each do |user|
+      user.posts.each do |post|
+        if post.public_status == 0 || post.public_status == 1
+          @group_posts <<  post
+        end
+      end
+    end
+  end
+
   private
 
   def group_params
@@ -152,4 +181,11 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def ensure_group_user
+    @group = Group.find(params[:id])
+    unless GroupUser.find_by(user_id: current_user.id, group_id: @group.id, is_member: true)
+      flash[:alert] = "参加していないグループの投稿一覧は閲覧できません"
+      redirect_to my_page_user_path(current_user)
+    end
+  end
 end

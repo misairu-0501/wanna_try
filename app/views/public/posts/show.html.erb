@@ -39,7 +39,7 @@
       <% end %>
     </div>
     <div class="col-md-6">
-      <img><%= image_tag @post.get_post_image.variant( resize: "500" ).processed %></img><br>
+      <img><%= image_tag @post.get_post_image, width: "500px", height: "auto" %></img><br>
 
       <!--いいね-->
       <%= render 'public/favorites/favorites', post: @post %>

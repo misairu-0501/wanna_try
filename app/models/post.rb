@@ -17,7 +17,7 @@ class Post < ApplicationRecord
 
   #投稿画像の取得
   def get_post_image
-    (post_image.attached?) ? post_image : 'no_image.png'
+    (post_image.attached?) ? post_image : 'no_image.jpg'
   end
 
   #userが「いいね」しているかどうかしらべる(存在していればtrue)

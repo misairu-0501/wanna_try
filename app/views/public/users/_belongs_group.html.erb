@@ -12,7 +12,10 @@
           <td><%= group.name %></td>
           <td><%= User.find(group.owner_id).name %></td>
           <td><%= GroupUser.where(group_id: group.id, is_member: true).count %></td>
-          <td><%= link_to "詳細", group_path(group), class: "btn btn-outline-main" %></td>
+          <td>
+            <%= link_to "詳細", group_path(group), class: "btn btn-outline-main" %>
+            <%= link_to "グループ参加者の投稿一覧", group_page_group_path(group), class: "btn btn-outline-main" %>
+          </td>
         </tr>
       <% end %>
     <% end %>

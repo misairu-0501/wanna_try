@@ -5,8 +5,8 @@
               <div class="card-header text-center">
                 <h4><%= post.genre.name %></h4>
               </div>
-              <img class="card-img-top post_img_index">
-                <%= image_tag post.get_post_image %>
+              <img class="card-img-top">
+                <%= image_tag post.get_post_image, width: "100%", height: "auto" %>
               </img>
               <div class="card-body">
                 <h4 class="card-title"><%= post.title %></h4>
