@@ -12,6 +12,7 @@
                 <h4 class="card-title"><%= post.title %></h4>
                 <p>お名前：<%= post.child.name %></p>
                 <p>年齢(写真時)：<%= post.age_calculation %></p>
+                <p>性別：<%= Child.genders_i18n[post.child.gender] %></p>
                 <p>投稿者：<%= post.user.name %></p>
                 <p>投稿日：<%= post.created_at.strftime("%Y/%m/%d") %></p>
                 <p>公開範囲：<%= Post.public_statuses_i18n[Post.public_statuses.key(post.public_status)] %></p>
