@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_group_owner, only:[:edit, :update, :invitation_page]
-  before_action :ensure_group_user, only:[:show, :group_page]
+  before_action :ensure_group_user, only:[:group_page, :show]
 
   #グループ作成画面を表示
   def index
@@ -183,7 +183,7 @@ class Public::GroupsController < ApplicationController
 
   def ensure_group_user
     @group = Group.find(params[:id])
-    unless GroupUser.find_by(user_id: current_user.id, group_id: @group.id, is_member: true)
+    unless GroupUser.find_by(user_id: current_user.id, group_id: @group.id)
       flash[:alert] = "参加していないグループの投稿一覧は閲覧できません"
       redirect_to my_page_user_path(current_user)
     end

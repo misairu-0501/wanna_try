@@ -25,11 +25,22 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #誕生日と日付から年齢を求める
   def age_calculation
     shooting_date = self.shooting_date.strftime("%Y%m%d").to_i
     birthday = Child.find(self.child_id).birthday.strftime("%Y%m%d").to_i
     age = ((shooting_date - birthday) / 10000).floor
+  end
 
-    "#{age}歳"
+  #年齢が指定の範囲に入っているか確認する(入っている：true)
+  def age_range?(age_lower, age_upper)
+    post_age = self.age_calculation
+    return (post_age.to_i >= age_lower.to_i) && (post_age.to_i <= age_upper.to_i)
+  end
+
+  #投稿の子供の性別が検索と一致するか確認する(一致する or 検索が「全て」：true)
+  def ensure_gender?(search_gender)
+    post_gender = self.child.gender
+    return (search_gender == post_gender) || (search_gender == "all")
   end
 end

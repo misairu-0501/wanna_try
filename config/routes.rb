@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     post 'guest_sign_in' => 'guests#new_guest'
+
+    get 'search/search_input'
+    get 'search/search_result'
+
     resources :users, only:[:edit, :index, :show, :update] do
       member do
         get 'my_page'
