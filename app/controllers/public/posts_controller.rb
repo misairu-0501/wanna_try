@@ -37,11 +37,17 @@ class Public::PostsController < ApplicationController
   def index
     @genres = Genre.all
 
+    #公開範囲が「全体」のもののみを表示する。
     if params[:id]
       @genre = Genre.find(params[:id])
       @posts = @genre.posts.where(public_status: Post.public_statuses[:range_all])
+    elsif params[:latest]
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).latest
+    elsif params[:old]
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).old
+    elsif params[:favorite_count]
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).favorite_count
     else
-      #公開範囲が「全体」のもののみを表示する。
       @posts = Post.all.where(public_status: Post.public_statuses[:range_all])
     end
   end

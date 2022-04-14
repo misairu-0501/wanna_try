@@ -15,6 +15,10 @@ class Post < ApplicationRecord
   validates :public_status, presence: true
   attribute :public_status, :integer, default: 0
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :favorite_count, -> {includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}}
+
   #投稿画像の取得
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'

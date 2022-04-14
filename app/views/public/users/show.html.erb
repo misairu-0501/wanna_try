@@ -3,10 +3,17 @@
     <div class="col-md-3">
       <h2>ユーザー</h2>
       <%= render 'public/users/user_info', user: @user %>
+      <% if @user == current_user %>
+        <%= render 'public/users/public_status' %>
+      <% end %>
     </div>
 
     <div class="col-md-9">
-      <h2><%= "#{@user.name}さんの投稿一覧" %></h2>
+      <% if params[:public_status] %>
+        <h2><%= @user.name %>さんの投稿一覧 "<%= Post.public_statuses_i18n[params[:public_status]] %>"</h2>
+      <% else %>
+        <h2><%= @user.name %>さんの投稿一覧 </h2>
+      <% end %>
       <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>
