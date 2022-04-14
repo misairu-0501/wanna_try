@@ -36,19 +36,16 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    puts params[:public_status]
-
     #カレントユーザーの場合は自分の全ての投稿を閲覧可能
     if @user == current_user
       if params[:public_status]
-        @posts = @user.posts.where(public_status: Post.public_statuses[params[:public_status]])
+        @posts = @user.posts.where(public_status: Post.public_statuses[params[:public_status]]).page(params[:page])
       else
-        @posts = @user.posts
+        @posts = @user.posts.page(params[:page])
       end
     #他のユーザーの投稿はpublic_statusesが「全て」の場合のみ閲覧可能
     else
-      @posts = @user.posts.where(public_status: Post.public_statuses[:range_all])
+      @posts = @user.posts.where(public_status: Post.public_statuses[:range_all]).page(params[:page])
     end
   end
 
@@ -60,6 +57,7 @@ class Public::UsersController < ApplicationController
         @posts << favorite_post
       end
     end
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
 
   private

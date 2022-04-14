@@ -165,6 +165,7 @@ class Public::GroupsController < ApplicationController
         end
       end
     end
+    @group_posts = Kaminari.paginate_array(@group_posts).page(params[:page])
   end
 
   private

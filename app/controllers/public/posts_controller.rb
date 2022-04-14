@@ -40,15 +40,16 @@ class Public::PostsController < ApplicationController
     #公開範囲が「全体」のもののみを表示する。
     if params[:id]
       @genre = Genre.find(params[:id])
-      @posts = @genre.posts.where(public_status: Post.public_statuses[:range_all])
+      @posts = @genre.posts.where(public_status: Post.public_statuses[:range_all]).page(params[:page])
     elsif params[:latest]
-      @posts = Post.where(public_status: Post.public_statuses[:range_all]).latest
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).latest.page(params[:page])
     elsif params[:old]
-      @posts = Post.where(public_status: Post.public_statuses[:range_all]).old
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).old.page(params[:page])
     elsif params[:favorite_count]
       @posts = Post.where(public_status: Post.public_statuses[:range_all]).favorite_count
+      @posts = Kaminari.paginate_array(@posts).page(params[:page])
     else
-      @posts = Post.all.where(public_status: Post.public_statuses[:range_all])
+      @posts = Post.where(public_status: Post.public_statuses[:range_all]).page(params[:page])
     end
   end
 

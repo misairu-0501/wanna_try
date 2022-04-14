@@ -11,5 +11,6 @@ class Public::SearchController < ApplicationController
         @posts << result_1
       end
     end
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
 end
