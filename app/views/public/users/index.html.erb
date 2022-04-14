@@ -1,7 +1,21 @@
 <div class="container">
-  <h2>ユーザー一覧</h2>
+  <% if params[:user_name] %>
+    <h2>ユーザー検索結果  ～検索ワード"<%= params[:user_name] %>"～</h2>
+  <% elsif params[:post_count] %>
+    <h2>ユーザー一覧 "投稿数順"</h2>
+  <% elsif params[:follower_count] %>
+    <h2>ユーザー一覧 "フォロワー数順"</h2>
+  <% else %>
+    <h2>ユーザー一覧</h2>
+  <% end %>
   <div class="row">
     <div class="col-lg-8 mx-auto">
+      <div class="mb-3">
+        <span>並び順</span>|
+        <%= link_to "投稿数順", users_path(post_count: "true") %>|
+        <%= link_to "フォロワー数順", users_path(follower_count: "true") %>
+        <%= render 'public/users/user_search' %>
+      </div>
       <%= render 'public/users/index', users: @users %>
     </div>
   </div>

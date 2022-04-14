@@ -1,15 +1,17 @@
       <table class="table">
         <tr>
-          <th class="table-header"></th>
-          <th class="table-header">ニックネーム</th>
-          <th class="table-header">フォロー数</th>
-          <th class="table-header">フォロワー数</th>
-          <th class="table-header"></th>
+          <th class="table-heading"></th>
+          <th class="table-heading">ニックネーム</th>
+          <th class="table-heading">投稿数</th>
+          <th class="table-heading">フォロー数</th>
+          <th class="table-heading">フォロワー数</th>
+          <th class="table-heading"></th>
         </tr>
         <% users.each do |user| %>
           <tr>
             <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
             <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.posts.count %></td>
             <td><%= link_to user.followings.count, followings_user_relationships_path(user) %></td>
             <td><%= link_to user.followers.count, followers_user_relationships_path(user) %></td>
             <td>

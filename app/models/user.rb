@@ -24,6 +24,9 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   attribute :is_deleted, :boolean, default: false
 
+  scope :post_count, -> { includes(:posts).sort {|a,b| b.posts.size <=> a.posts.size}}
+  scope :follower_count, -> { includes(:followers).sort {|a,b| b.followers.size <=> a.followers.size}}
+
   #プロフィール画像の取得
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_profile_image.jpg'

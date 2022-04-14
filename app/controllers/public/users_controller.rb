@@ -23,7 +23,15 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    if params[:user_name]
+      @users = User.where("name LIKE?","%#{params[:user_name]}%")
+    elsif params[:post_count]
+      @users = User.post_count
+    elsif params[:follower_count]
+      @users = User.follower_count
+    else
+      @users = User.all
+    end
   end
 
   def show
