@@ -11,6 +11,21 @@ ja:
         range_myself: "自分のみ"
 
   activerecord:
-  errors:
-    messages:
-      record_invalid: "バリデーションに失敗しました: %{errors}"
+    attributes:
+      user:
+        name: "ニックネーム"
+      post:
+        title: "タイトル"
+        body: "説明"
+        shooting_date: "写真撮影日"
+        public_status: "公開範囲ステータス"
+      genre:
+        name: "ジャンル名"
+      child:
+        name: "お名前"
+        birthday: "誕生日"
+        gender: "性別"
+      post_commnet:
+        comment: "コメント"
+      group:
+        name: "グループ名"

@@ -13,8 +13,12 @@
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <p id="notice", class="text-success"><%= notice %></p>
-        <p id="alert", class="text-danger"><%= alert %></p>
+        <% if notice != nil %>
+          <p id="notice", class="alert alert-success text-center"><%= notice %></p>
+        <% end %>
+        <% if alert != nil %>
+          <p id="alert", class="alert alert-danger text-center"><%= alert %></p>
+        <% end %>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

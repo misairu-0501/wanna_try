@@ -23,7 +23,7 @@ class Public::GroupsController < ApplicationController
       group_user.group_id = @group.id
       group_user.is_member = true
       group_user.save
-      flash[:notice] = "グループを作成しました"
+      flash[:notice] = "グループ「#{@group.name}」を作成しました"
       redirect_to my_page_user_path(current_user)
     else
       render :new
@@ -43,6 +43,7 @@ class Public::GroupsController < ApplicationController
   #グループの編集内容を更新
   def update
     if @group.update(group_params)
+      flash[:notice] = "グループの情報を更新しました"
       redirect_to group_path(@group)
     else
       render :edit
@@ -53,7 +54,7 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    flash[:notice] = "グループを削除しました"
+    flash[:notice] = "グループ「#{@group.name}」を削除しました"
     redirect_to my_page_user_path(current_user)
   end
 
