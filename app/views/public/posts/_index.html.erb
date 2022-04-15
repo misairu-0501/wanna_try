@@ -22,7 +22,9 @@
           </div>
           <div class="card-footer d-flex justify-content-around align-items-center">
             <%= link_to "詳細", post_path(post), class: "btn btn-outline-main" %>
-            <%= render 'public/favorites/favorites', post: post %>
+            <span id="favorite_buttons_<%= post.id %>" >
+              <%= render 'public/favorites/favorites', post: post %>
+            </span>
             <%= render 'public/post_comments/number_of_comments', post: post %>
           </div>
         </div>

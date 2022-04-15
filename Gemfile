@@ -62,6 +62,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'jquery-rails'
 group :production do
   gem 'mysql2'
 end

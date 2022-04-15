@@ -42,11 +42,14 @@
       <img><%= image_tag @post.get_post_image, width: "500px", height: "auto" %></img><br>
 
       <!--いいね-->
-      <%= render 'public/favorites/favorites', post: @post %>
+      <span id="favorite_buttons_<%= @post.id %>" >
+        <%= render 'public/favorites/favorites', post: @post %>
+      </span>
       <span>|</span>
       <!--コメント-->
       <%= render 'public/post_comments/number_of_comments', post: @post %>
     </div>
+  </div>
 
   <div class="row">
     <div class="col-md-12">
