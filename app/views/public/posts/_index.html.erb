@@ -9,7 +9,7 @@
             <h4><%= post.genre.name %></h4>
           </div>
           <img class="card-img-top">
-            <%= image_tag post.get_post_image, width: "100%", height: "auto" %>
+            <%= image_tag post.get_post_image.variant(resize: "500x500^", gravity: "center", crop: "500x500+0+0").processed %>
           </img>
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
