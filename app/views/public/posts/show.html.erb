@@ -41,13 +41,15 @@
     <div class="col-md-6">
       <img><%= image_tag @post.get_post_image, width: "500px", height: "auto" %></img><br>
 
-      <!--いいね-->
+      <!--いいね(非同期通信化)-->
       <span id="favorite_buttons_<%= @post.id %>" >
         <%= render 'public/favorites/favorites', post: @post %>
       </span>
       <span>|</span>
-      <!--コメント-->
-      <%= render 'public/post_comments/number_of_comments', post: @post %>
+      <!--コメント数(非同期通信化)-->
+      <span id="number_of_post_comments">
+        <%= render 'public/post_comments/number_of_comments', post: @post %>
+      </span>
     </div>
   </div>
 
@@ -58,9 +60,12 @@
         <%= render 'layouts/errors', obj: @post_comment %>
       </div>
 
-      <%= render 'public/post_comments/index', post: @post %>
+      <!--コメント一覧(非同期通信化)-->
+      <div id="post_comments">
+        <%= render 'public/post_comments/index', post: @post %>
+      </div>
 
-      <%= form_with model: [@post, @post_comment] do |f| %>
+      <%= form_with model: [@post, @post_comment], local: false do |f| %>
         <%= f.text_area :comment, rows: '5', wrap: "hard", placeholder: "コメントをここに", class: "form-control" %><br>
         <%= f.submit "送信する", class: "btn btn-main"  %>
       <% end %>
