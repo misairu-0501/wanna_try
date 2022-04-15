@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'search/search_input'
     get 'search/search_result'
 
-    resources :users, only:[:edit, :index, :show, :update] do
+    resources :users, only:[:edit, :index, :show, :update, :destroy] do
       member do
         get 'my_page'
         get 'my_favorite'
