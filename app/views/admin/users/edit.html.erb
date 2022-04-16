@@ -1,0 +1,34 @@
+<div class="container">
+  <h2><%= @user.name %>さんの会員情報編集</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <div id="error">
+        <%= render 'layouts/errors', obj: @user %>
+      </div>
+
+      <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= f.label :name, "ニックネーム" %></th>
+            <td><%= f.text_field :name, placeholder: "ニックネーム", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.text_field :email, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :is_deleted, "会員ステータス" %></th>
+            <td>
+              <%= f.radio_button :is_deleted, false %> <%= f.label :is_deleted, "有効", value: false, class: "mr-3" %>
+              <%= f.radio_button :is_deleted, true %> <%= f.label :is_deleted, "停止中", value: true %>
+            </td>
+          </tr>
+        </table>
+        <%= f.submit "編集を保存する",class: "btn btn-main" %>
+        <%= link_to "詳細画面へ戻る", admin_user_path(@user), class: "d-flex justify-content-end" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

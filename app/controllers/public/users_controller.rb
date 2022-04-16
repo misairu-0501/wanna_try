@@ -24,13 +24,15 @@ class Public::UsersController < ApplicationController
 
   def index
     if params[:user_name]
-      @users = User.where("name LIKE?","%#{params[:user_name]}%")
+      @users = User.where("name LIKE?","%#{params[:user_name]}%").page(params[:page]).per(10)
     elsif params[:post_count]
       @users = User.post_count
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
     elsif params[:follower_count]
       @users = User.follower_count
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
     else
-      @users = User.all
+      @users = User.page(params[:page]).per(10)
     end
   end
 

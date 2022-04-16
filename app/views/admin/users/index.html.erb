@@ -1,0 +1,17 @@
+<div class="container">
+  <% if params[:user_name] %>
+    <h2>ユーザー検索結果  ～検索ワード"<%= params[:user_name] %>"～</h2>
+  <% else %>
+    <h2>ユーザー一覧</h2>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="mb-3">
+        <%= render 'admin/users/user_search' %>
+      </div>
+
+      <%= render 'admin/users/index', users: @users %>
+
+    </div>
+  </div>
+</div>
