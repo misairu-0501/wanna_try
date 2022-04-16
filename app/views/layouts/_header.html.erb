@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#f5a500;">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Wanna Try</span></a>
+      <a class="navbar-brand" href="/"><span class="font-kaushan">Wanna Try</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,32 +13,32 @@
           </li>
           <li>
             <%= link_to my_page_user_path(current_user),class: 'nav-link text-light' do %>
-              <i></i> マイページ
+              <i class="fas fa-user"></i> マイページ
             <% end %>
           </li>
           <li>
             <%= link_to my_favorite_user_path(current_user),class: 'nav-link text-light' do %>
-              <i></i> お気に入り
+              <i class="fas fa-heart"></i> お気に入り
             <% end %>
           </li>
           <li>
             <%= link_to groups_path,class: 'nav-link text-light' do %>
-              <i></i> グループ
+              <i class="fas fa-user-friends"></i> グループ
             <% end %>
           </li>
           <li>
             <%= link_to posts_path,class: 'nav-link text-light' do %>
-              <i></i> 投稿一覧
+              <i class="fas fa-images"></i> 投稿一覧
             <% end %>
           </li>
           <li>
             <%= link_to users_path,class: 'nav-link text-light' do %>
-              <i></i> ユーザー一覧
+              <i class="fas fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </li>
           <li>
             <%= link_to search_search_input_path,class: 'nav-link text-light' do %>
-              <i></i> 絞り込み検索
+              <i class="fas fa-search"></i> 絞り込み検索
             <% end %>
           </li>
           <li>
@@ -52,12 +52,12 @@
           </li>
           <li>
             <%= link_to admin_users_path, class: 'nav-link text-light' do %>
-              <i></i>ユーザー一覧
+              <i class="fas fa-solid fa-users"></i>ユーザー一覧
             <% end %>
           </li>
           <li>
             <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
-              <i></i>ジャンル一覧
+              <i class="fas fa-solid fa-tags"></i>ジャンル一覧
             <% end %>
           </li>
           <li>
@@ -69,11 +69,6 @@
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> Top
-            <% end %>
-          </li>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> about
             <% end %>
           </li>
           <li>

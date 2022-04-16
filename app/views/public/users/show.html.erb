@@ -1,6 +1,6 @@
 <div class ="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 mt-3">
       <h2>ユーザー</h2>
       <%= render 'public/users/user_info', user: @user %>
       <% if @user == current_user %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-9 mt-3">
       <% if params[:public_status] %>
         <h2><%= @user.name %>さんの投稿一覧 "<%= Post.public_statuses_i18n[params[:public_status]] %>"</h2>
       <% else %>

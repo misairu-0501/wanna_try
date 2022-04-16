@@ -1,9 +1,9 @@
 <div class = "container">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 mt-3">
       <%= render 'public/groups/group_user_search', {group_users: @group_users, group: @group} %>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 mt-3">
       <h2><%= "グループ「#{@group.name}」の投稿一覧" %></h2>
       <%= render 'public/posts/index', posts: @group_posts %>
     </div>
