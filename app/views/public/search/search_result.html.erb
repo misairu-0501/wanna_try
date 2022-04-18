@@ -9,16 +9,23 @@
         </thead>
         <tbody>
           <tr>
-            <td>タイトル：<%= params[:title] %></td>
+            <td>
+              <strong>タイトル</strong><br>
+              <% if params[:title] == "" %>
+                指定なし
+              <% else %>
+                <%= params[:title] %>
+              <% end %>
+            </td>
           </tr>
           <tr>
-            <td>ジャンル：<%= Genre.find(params[:genre_id]).name %></td>
+            <td><strong>ジャンル</strong><br><%= Genre.find(params[:genre_id]).name %></td>
           </tr>
           <tr>
-            <td>年齢：<%=params[:age_lower] %>歳～<%= params[:age_upper] %>歳</td>
+            <td><strong>年齢</strong><br><%=params[:age_lower] %>歳～<%= params[:age_upper] %>歳</td>
           </tr>
           <tr>
-            <td>性別：
+            <td><strong>性別</strong><br>
               <% if params[:gender] == "boy" %>
                 男の子
               <% elsif params[:gender] == "girl" %>

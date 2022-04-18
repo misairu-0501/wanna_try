@@ -5,15 +5,15 @@
     </div>
     <div class="col-md-10 mt-3">
       <% if params[:id] %>
-        <h2>「<%= @genre.name %>」投稿一覧（全<%= @posts.count%>件）</h2>
+        <h2>「<%= @genre.name %>」投稿一覧（全<%= @posts.total_count %>件）</h2>
       <% elsif params[:latest] %>
-        <h2>投稿一覧（全<%= @posts.count%>件）"新着順"</h2>
+        <h2>投稿一覧（全<%= @posts.total_count%>件）"新着順"</h2>
       <% elsif params[:old] %>
-        <h2>投稿一覧（全<%= @posts.count%>件）"古い順"</h2>
+        <h2>投稿一覧（全<%= @posts.total_count%>件）"古い順"</h2>
       <% elsif params[:favorite_count] %>
-        <h2>投稿一覧（全<%= @posts.count%>件）"いいね数順"</h2>
+        <h2>投稿一覧（全<%= @posts.total_count%>件）"いいね数順"</h2>
       <% else %>
-        <h2>投稿一覧（全<%= @posts.count%>件）</h2>
+        <h2>投稿一覧（全<%= @posts.total_count%>件）</h2>
       <% end %>
       <div class="mb-3">
         <span>並び順</span>|
