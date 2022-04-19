@@ -4,7 +4,7 @@
     <div class="col-lg-8 mx-auto">
       <div class="alert alert-warning">
         <% if @user.children.count == 0 %>
-          <span><strong>お子さんの情報を登録すると投稿できます。</strong></span>
+          <span><strong>お子さまの情報を登録すると投稿できます。</strong></span>
         <% else%>
           <%= link_to "投稿する", new_post_path, class: "btn btn-outline-main" %>
           <%= link_to "#{@user.name}さんの投稿一覧", user_path(@user), class: "btn btn-outline-main" %>
@@ -46,7 +46,7 @@
 
       <h3 class="mt-5">●お子さま一覧</h3>
       <%= render 'public/users/children', children: @children %>
-      <%= link_to "お子様追加", new_child_path, class: "btn btn-main" %>
+      <%= link_to "お子さま追加", new_child_path, class: "btn btn-main" %>
 
       <h3 class="mt-5">●所属グループ一覧</h3>
       <%= render 'public/users/belongs_group', groups: @groups %>

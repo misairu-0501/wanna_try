@@ -23,7 +23,7 @@ ja:
         name: "ジャンル名"
       child:
         name: "お名前"
-        birthday: "誕生日"
+        birthday: "お誕生日"
         gender: "性別"
       post_commnet:
         comment: "コメント"

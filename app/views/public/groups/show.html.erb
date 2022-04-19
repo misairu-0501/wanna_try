@@ -45,9 +45,9 @@
               <td>
                 <% if user != current_user %>
                   <% if GroupUser.find_by(user_id: user.id, group_id: @group.id).is_member == true %>
-                    <%= link_to "退会させる", forced_leave_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "グループから退会させますか？"}, class: "btn btn-outline-danger" %>
+                    <%= link_to "退会させる", forced_leave_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "#{user.name}さんをグループから退会させますか？"}, class: "btn btn-outline-danger" %>
                   <% else %>
-                    <%= link_to "招待を取り消す", cancel_invitation_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "招待を取り消しますか？"}, class: "btn btn-outline-danger" %>
+                    <%= link_to "招待を取り消す", cancel_invitation_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "#{user.name}さんの招待を取り消しますか？"}, class: "btn btn-outline-danger" %>
                   <% end %>
                 <% end %>
               </td>
@@ -67,7 +67,7 @@
             <%= link_to "参加", join_group_path(@group), method: :patch, class: "btn btn-main" %>
             <%= link_to "拒否", reject_invitation_group_path(@group), method: :delete, data: {confirm: "招待が削除されますがよろしいですか？"}, class: "btn btn-danger" %>
           <% else %>
-            <%= link_to "グループ退会", leave_group_path(@group), method: :delete, data: {confirm: "グループを退会しますか？"}, class: "btn btn-danger" %>
+            <%= link_to "グループ退会", leave_group_path(@group), method: :delete, data: {confirm: "グループ「#{@group.name}」を退会しますか？"}, class: "btn btn-danger" %>
           <% end %>
         <% end %>
       <% end %>

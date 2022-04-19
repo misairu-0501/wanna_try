@@ -11,7 +11,7 @@ class Public::ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.user_id = @user.id
     if @child.save
-      flash[:notice] = "お子さんを追加しました"
+      flash[:notice] = "お子さまを追加しました"
       redirect_to my_page_user_path(@user)
     else
       render :new
@@ -26,7 +26,7 @@ class Public::ChildrenController < ApplicationController
     @user = current_user
     @child = Child.find(params[:id])
     if @child.update(child_params)
-      flash[:notice] = "お子さんの情報を更新しました"
+      flash[:notice] = "お子さまの情報を更新しました"
       redirect_to my_page_user_path(@user)
     else
       render :edit
@@ -36,7 +36,7 @@ class Public::ChildrenController < ApplicationController
   def destroy
     @child = Child.find(params[:id])
     @child.destroy
-    flash[:notice] = "お子さんのデータを削除しました"
+    flash[:notice] = "お子さまのデータを削除しました"
     redirect_to my_page_user_path(current_user)
   end
 
@@ -49,7 +49,7 @@ class Public::ChildrenController < ApplicationController
   def ensure_correct_user
     @child = Child.find(params[:id])
     unless @child.user_id == current_user.id
-      flash[:alert] = "他のユーザーのお子さんの編集はできません"
+      flash[:alert] = "他のユーザーのお子さまの編集はできません"
       redirect_to my_page_user_path(current_user)
     end
   end
