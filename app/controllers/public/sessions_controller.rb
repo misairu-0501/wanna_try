@@ -35,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    flash[:notice] =  'guestuserでログインしました。'
+    flash[:notice] =  'guestuserでログインしました'
     redirect_to  my_page_user_path(user)
   end
 
@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
-      flash[:alert] = "ユーザーアカウントが停止されています。"
+      flash[:alert] = "ユーザーアカウントが停止されています"
       redirect_to root_path
     end
   end

@@ -12,8 +12,8 @@
           <td><%= @post.child.name %></td>
         </tr>
         <tr>
-          <th>お年</th>
-          <td><%= @post.age_calculation %>歳</td>
+          <th>年齢(写真の時点)</th>
+          <td><%= @post.age_calculation %>歳（<%= @post.shooting_date.strftime("%Y/%m/%d") %>時点）</td>
         </tr>
         <tr>
           <th>投稿者</th>
@@ -35,7 +35,7 @@
 
       <% if @post.user == current_user %>
         <%= link_to "編集", edit_post_path(@post), class: "btn btn-main" %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"}, class: "btn btn-danger" %>
       <% end %>
     </div>
     <div class="col-md-6">

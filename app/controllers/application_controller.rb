@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  
   #二人のユーザーが同じグループに所属しているか調べる(同じグループに所属：true)
   def same_group?(user1_id, user2_id)
     flag = false

@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     if params[:user_name]
       @users = User.where("name LIKE?","%#{params[:user_name]}%").page(params[:page]).per(10)

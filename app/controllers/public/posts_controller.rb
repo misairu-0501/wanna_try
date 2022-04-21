@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only:[:edit, :update, :destroy]
+  before_action :ensure_correct_user, only:[:edit, :update]
   before_action :ensure_public_status, only:[:show]
 
   def new

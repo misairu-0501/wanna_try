@@ -19,6 +19,9 @@ class Post < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :favorite_count, -> {includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}}
 
+  #上記一行は下記のようにも記述できる
+  # scope :favorite_count, -> {left_joins(:favorites).group(:id).order(Arel.sql('COUNT(favorites.id) desc'))}
+
 
   #投稿画像の取得
   def get_post_image
