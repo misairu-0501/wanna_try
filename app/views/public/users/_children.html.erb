@@ -1,0 +1,25 @@
+<% if children.count != 0 %>
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-heading">お名前</th>
+      <th class="table-heading">生年月日</th>
+      <th class="table-heading">年齢</th>
+      <th class="table-heading">性別</th>
+      <th class="table-heading"></th>
+    </tr>
+    <% children.each do |child| %>
+      <tr>
+        <td><%= child.name %></th>
+        <td><%= child.birthday.strftime("%Y/%m/%d") %></th>
+        <td><%= child.now_age_calculation %></td>
+        <td><%= Child.genders_i18n[child.gender] %></th>
+        <td>
+          <%= link_to "編集", edit_child_path(child), class: "btn btn-outline-main" %>
+          <%= link_to "削除", child_path(child), method: :delete, data: {confirm: "お子さんに紐づいた投稿も消去されますが削除しますか？"}, class: "btn btn-outline-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>お子さまの登録なし</p>
+<% end %>

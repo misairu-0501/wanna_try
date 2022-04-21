@@ -1,0 +1,10 @@
+<div class="search_form float-right mb-3">
+  <%= form_with url: users_path, local: true, method: :get do |f| %>
+    <table>
+      <tr>
+        <td><%= f.text_field :user_name, class: "form-control" %></td>
+        <td><%= f.submit "ユーザー検索", class: "btn btn-main" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

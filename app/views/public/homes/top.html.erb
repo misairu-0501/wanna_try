@@ -1,5 +1,30 @@
-<p>Welcome to Wanna Try!</p>
-<p>自分の子供のおすすめを投稿したり、</p>
-<P>他のご家庭のお子さんのおすすめを</P>
-<P>閲覧できるコミュニティサイトです。</P>
-<P>子供のおすすめをみんなで共有しましょう！</P>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto mt-3">
+      <div class="d-flex justify-content-center">
+        <img src="/assets/top_image.jpg" alt="">
+      </div>
+    </div>
+    <div class="col-lg-6 mx-auto mt-3">
+      <h1 class="font-kaushan text-center">Welcome to Wanna Try!</h1>
+      <div class="alert alert-warning text-center">
+        <p class="mt-3">自分の子供のおすすめを投稿したり</p>
+        <p class="mt-3">他のご家庭のお子さんのおすすめを</p>
+        <P class="mt-3">閲覧できるコミュニティサイトです。</P>
+        <P class="mt-3">５つのジャンル</P>
+        <P class="mt-3">「遊んだ、学んだ、出かけた、食べた、着た」から</P>
+        <P class="mt-3">子供のおすすめをみんなで共有しよう！</P>
+      </div>
+      <div class="mt-4 d-flex justify-content-center">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-main btn-block" %><br>
+      </div>
+      <div class="mt-4 d-flex justify-content-center">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-main btn-block" %>
+      </div>
+      <div class="mt-4 d-flex justify-content-center">
+        <%= link_to "ゲストログイン(閲覧)", guest_sign_in_path, method: :post, class: "btn btn-main btn-block" %>
+      </div>
+
+    </div>
+  </div>
+</div>

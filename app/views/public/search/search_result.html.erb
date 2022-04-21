@@ -1,0 +1,46 @@
+<div class = "container">
+  <div class="row">
+    <div class="col-md-2">
+      <table class="table table-borderless border mt-4">
+        <thead class="text-center">
+          <tr class="border-bottom">
+            <td class="table-heading">検索条件</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>タイトル</strong><br>
+              <% if params[:title] == "" %>
+                指定なし
+              <% else %>
+                <%= params[:title] %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>ジャンル</strong><br><%= Genre.find(params[:genre_id]).name %></td>
+          </tr>
+          <tr>
+            <td><strong>年齢</strong><br><%=params[:age_lower] %>歳～<%= params[:age_upper] %>歳</td>
+          </tr>
+          <tr>
+            <td><strong>性別</strong><br>
+              <% if params[:gender] == "boy" %>
+                男の子
+              <% elsif params[:gender] == "girl" %>
+                女の子
+              <% else %>
+                全て
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-10">
+      <h2>絞り込み検索結果（全<%= @posts.count %>件）</h2>
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

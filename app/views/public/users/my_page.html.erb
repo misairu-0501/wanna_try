@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>マイページ</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="alert alert-warning">
+        <% if @user.children.count == 0 %>
+          <span><strong>お子さまの情報を登録すると投稿できます。</strong></span>
+        <% else%>
+          <%= link_to "投稿する", new_post_path, class: "btn btn-outline-main" %>
+          <%= link_to "#{@user.name}さんの投稿一覧", user_path(@user), class: "btn btn-outline-main" %>
+        <% end %>
+        <div class="float-right">
+          <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本ユーザーを削除してもよろしいですか？投稿データは削除されます。" }, class: "btn btn-outline-danger" %>
+        </div>
+      </div>
+
+      <h3 class="mt-3">●ご登録内容</h3>
+
+      <table>
+        <tr>
+          <td rowspan="2"><%= image_tag @user.get_profile_image, size: '100x100' %></td>
+          <td>フォロー数：</td>
+          <td><%= link_to@user.followings.count, followings_user_relationships_path(@user) %></td>
+        </tr>
+        <tr>
+          <td>フォロワー数：</td>
+          <td><%= link_to@user.followers.count, followers_user_relationships_path(@user) %></td>
+        </tr>
+      </table>
+
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-heading">ニックネーム</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th  class="table-heading">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+
+      <!--ゲストユーザーの場合はユーザー編集を行えにようにする-->
+      <% if @user.name != "guestuser" %>
+        <%= link_to "ユーザー編集", edit_user_path(@user), class: "btn btn-main" %>
+      <% end %>
+
+      <h3 class="mt-5">●お子さま一覧</h3>
+      <%= render 'public/users/children', children: @children %>
+      <%= link_to "お子さま追加", new_child_path, class: "btn btn-main" %>
+
+      <h3 class="mt-5">●所属グループ一覧</h3>
+      <%= render 'public/users/belongs_group', groups: @groups %>
+      <%= link_to "グループ作成", new_group_path, class: "btn btn-main" %>
+
+      <h3 class="mt-5">●招待されてるグループ一覧</h3>
+      <%= render 'public/users/invitation_group', groups: @groups %>
+
+    </div>
+  </div>
+</div>

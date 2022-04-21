@@ -1,0 +1,19 @@
+<table class="table table-borderless border mt-4">
+  <thead class="text-center">
+    <tr class="border-bottom">
+      <td class="table-heading">ジャンル検索</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= link_to posts_path(id: genre.id) do %>
+            <span><%= genre.name %></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "全投稿", posts_path, class: "btn btn-main" %>

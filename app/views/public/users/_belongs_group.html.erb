@@ -1,0 +1,25 @@
+<% if GroupUser.where(user_id: current_user.id, is_member: true).count != 0 %>
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-heading">グループ名</th>
+      <th class="table-heading">オーナー</th>
+      <th class="table-heading">グループ人数</th>
+      <th class="table-heading"></th>
+    </tr>
+    <% groups.each do |group| %>
+      <% if GroupUser.find_by(group_id: group.id, user_id: current_user.id).is_member == true %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= User.find(group.owner_id).name %></td>
+          <td><%= GroupUser.where(group_id: group.id, is_member: true).count %></td>
+          <td>
+            <%= link_to "詳細", group_path(group), class: "btn btn-outline-main" %>
+            <%= link_to "グループ参加者の投稿一覧", group_page_group_path(group), class: "btn btn-outline-main" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% else %>
+  <P>所属グループなし</P>
+<% end %>

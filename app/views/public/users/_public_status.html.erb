@@ -1,0 +1,30 @@
+<table class="table table-borderless border mt-4">
+  <thead class="text-center">
+    <tr class="border-bottom">
+      <td class="table-heading">公開範囲</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(public_status: Post.public_statuses.key(0)) do %>
+          <span><%= Post.public_statuses_i18n[Post.public_statuses.key(0)] %></span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to user_path(public_status: Post.public_statuses.key(1)) do %>
+          <span><%= Post.public_statuses_i18n[Post.public_statuses.key(1)] %></span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to user_path(public_status: Post.public_statuses.key(2)) do %>
+          <span><%= Post.public_statuses_i18n[Post.public_statuses.key(2)] %></span>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>グループ詳細</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="alert alert-warning">
+        <%= link_to "グループ参加者の投稿一覧", group_page_group_path(@group), class: "btn btn-outline-main" %>
+      </div>
+      <h3 class="mt-3">●グループ情報</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-heading">グループ名</th>
+          <td><%= @group.name %></td>
+        </tr>
+        <tr>
+          <th class="table-heading">管理者</th>
+          <td><%= User.find(@group.owner_id).name %></td>
+        </tr>
+      </table>
+
+      <% if @group.owner_id == current_user.id %>
+        <%= link_to "グループ編集", edit_group_path(@group), class: "btn btn-main" %>
+        <%= link_to "グループ削除", group_path(@group), method: :delete, data: {confirm: "グループを削除してよろしいですか？"}, class: "btn btn-danger" %>
+      <% end %>
+
+      <h3 class="mt-3">●グループ参加者一覧</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-heading">ニックネーム</th>
+          <th class="table-heading">ステータス</th>
+          <% if @group.owner_id == current_user.id %>
+            <th class="table-heading">アクション</th>
+          <% end %>
+        </tr>
+        <% @group.users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td>
+              <% if GroupUser.find_by(user_id: user.id, group_id: @group.id).is_member == true %>
+                参加中
+              <% else %>
+                招待中
+              <% end %>
+            </td>
+            <% if @group.owner_id == current_user.id %>
+              <td>
+                <% if user != current_user %>
+                  <% if GroupUser.find_by(user_id: user.id, group_id: @group.id).is_member == true %>
+                    <%= link_to "退会させる", forced_leave_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "#{user.name}さんをグループから退会させますか？"}, class: "btn btn-outline-danger" %>
+                  <% else %>
+                    <%= link_to "招待を取り消す", cancel_invitation_group_path(group_id: @group.id, user_id: user.id), method: :delete, data: {confirm: "#{user.name}さんの招待を取り消しますか？"}, class: "btn btn-outline-danger" %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+
+      <!--グループオーナーの場合の操作-->
+      <% if @group.owner_id == current_user.id %>
+        <%= link_to "グループ招待", invitation_page_group_path(@group), class: "btn btn-main" %>
+      <!--グループオーナーでない場合の操作-->
+      <% else %>
+        <% if GroupUser.find_by(group_id: @group.id, user_id: current_user.id) !=nil %>
+          <% if GroupUser.find_by(group_id: @group.id, user_id: current_user.id).is_member == false %>
+            <p class="text-danger"><%= @group.name %>からグループへの招待が来てます。</p>
+            <%= link_to "参加", join_group_path(@group), method: :patch, class: "btn btn-main" %>
+            <%= link_to "拒否", reject_invitation_group_path(@group), method: :delete, data: {confirm: "招待が削除されますがよろしいですか？"}, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "グループ退会", leave_group_path(@group), method: :delete, data: {confirm: "グループ「#{@group.name}」を退会しますか？"}, class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= link_to "マイページへ戻る", my_page_user_path(current_user), class: "d-flex justify-content-end" %>
+
+    </div>
+  </div>
+</div>

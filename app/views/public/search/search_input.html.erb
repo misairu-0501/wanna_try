@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>絞り込み検索</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+     <%= form_with url: search_search_result_path, method: :GET, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th>タイトル(部分一致)<br>※空欄の場合は全検索</th>
+            <td><%= f.text_field :title, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {}, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <td>
+              <span><%= f.select :age_lower, *[0..20] %>歳</span>
+              <span>～</span>
+              <span><%= f.select :age_upper, *[0..20] %>歳</span>
+            </td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td>
+              <span class="pl-3">
+                <%= f.radio_button :gender, "boy" %>男の子
+              </span>
+              <span class="pl-3">
+                <%= f.radio_button :gender, "girl" %>女の子
+              </span>
+              <span class="pl-3">
+                <%= f.radio_button :gender, "all", checked: true %>全て
+              </span>
+            </td>
+          </tr>
+        </table>
+        <%= f.submit "検索する", class: "btn btn-main btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

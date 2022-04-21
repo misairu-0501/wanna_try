@@ -1,0 +1,31 @@
+ja:
+  enums:
+    child:
+      gender:
+        boy: "男の子"
+        girl: "女の子"
+    post:
+      public_status:
+        range_all: "全体"
+        range_group: "グループまで"
+        range_myself: "自分のみ"
+
+  activerecord:
+    attributes:
+      user:
+        name: "ニックネーム"
+      post:
+        title: "タイトル"
+        body: "説明"
+        shooting_date: "写真撮影日"
+        public_status: "公開範囲ステータス"
+      genre:
+        name: "ジャンル名"
+      child:
+        name: "お名前"
+        birthday: "お誕生日"
+        gender: "性別"
+      post_commnet:
+        comment: "コメント"
+      group:
+        name: "グループ名"

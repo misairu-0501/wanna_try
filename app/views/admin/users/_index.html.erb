@@ -1,0 +1,26 @@
+<table class="table">
+  <tr>
+    <th class="table-heading">会員ID</th>
+    <th class="table-heading"></th>
+    <th class="table-heading">ニックネーム</th>
+    <th class="table-heading">メールアドレス</th>
+    <th class="table-heading">ステータス</th>
+  </tr>
+  <% users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+      <td><%= link_to user.name, admin_user_path(user) %></td>
+      <td><%= user.email %></td>
+      <% if user.is_deleted == false %>
+        <td><strong class="text-success">有効</strong></td>
+      <% else %>
+        <td><strong class="text-danger">停止中</strong></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate users %>
+</div>

@@ -4,7 +4,7 @@
 
 ### サイトテーマ
 
-５つのテーマ「遊び、学び、外出、食事、服装」で自分の子供のおすすめを投稿したり、他のご家庭のお子さんのおすすめを閲覧できるコミュニティサイト
+５つのジャンル「遊び、学び、外出、食事、服装」で自分の子供のおすすめを投稿したり、他のご家庭のお子さんのおすすめを閲覧できるコミュニティサイト
 
 ### テーマを選んだ理由
 
@@ -22,7 +22,9 @@
 
 ## 設計書
 
-作成中
+- ER図　URL：https://app.diagrams.net/#G14gjIOO7o34Tpafqh9qG6f4bi5i-ddFzC
+- テーブル定義書　URL：https://docs.google.com/spreadsheets/d/1C7vH_FNIQF06URT92Y8uDGY8vSHLzHhIhZEEBi95M5g/edit#gid=279355362
+- アプリケーション詳細設計　URL：https://docs.google.com/spreadsheets/d/1fJOSiiGbB5VXlmm8v6sY5XvW7r2TjIQGThIn1CZD99o/edit#gid=1416927552
 
 ## 開発環境
 
@@ -34,5 +36,4 @@
 
 ## 使用素材
 
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
+- 画像素材　サービス名：「ODAN FREE PHOTO」 URL：https://o-dan.net/ja/

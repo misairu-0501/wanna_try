@@ -8,12 +8,19 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    
   </head>
 
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <p id="notice", class="text-success"><%= notice %></p>
+        <% if notice != nil %>
+          <p id="notice", class="alert alert-success text-center"><%= notice %></p>
+        <% end %>
+        <% if alert != nil %>
+          <p id="alert", class="alert alert-danger text-center"><%= alert %></p>
+        <% end %>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

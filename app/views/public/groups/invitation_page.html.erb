@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>グループへの招待</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <%= form_with url: invitation_group_path(@group), method: :post, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= f.label :name, "招待するユーザー名" %></th>
+            <td><%= f.text_field :name, placeholder: "ユーザー名を入力", class: "form-control" %></td>
+          </tr>
+        </table>
+        <%= f.hidden_field :group_id, :value => @group.id %>
+        <%= f.submit "招待する", class: "btn btn-main" %>
+        <%= link_to "グループ詳細へ戻る", group_path(@group), class: "d-flex justify-content-end" %>
+      <% end %>
+    </div>
+  </div>
+</div>

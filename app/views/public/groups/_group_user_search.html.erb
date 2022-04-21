@@ -1,0 +1,16 @@
+<table class="table table-borderless border mt-4">
+  <thead class="text-center">
+    <tr class="border-bottom">
+      <td class="table-heading">グループ参加者</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% group_users.each do |group_user| %>
+      <tr>
+        <td>
+          <span><%= group_user.name %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

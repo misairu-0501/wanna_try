@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>ジャンル編集</h2>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <div id="error">
+        <%= render 'layouts/errors', obj: @genre %>
+      </div>
+
+      <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
+        <table>
+          <tr>
+            <td><%= f.label :name, "ジャンル名" %></td>
+            <td><%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-main" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
