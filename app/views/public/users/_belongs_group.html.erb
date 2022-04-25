@@ -3,7 +3,7 @@
     <tr>
       <th class="table-heading">グループ名</th>
       <th class="table-heading">オーナー</th>
-      <th class="table-heading">グループ人数</th>
+      <th class="table-heading">参加者数</th>
       <th class="table-heading"></th>
     </tr>
     <% groups.each do |group| %>
@@ -14,7 +14,7 @@
           <td><%= GroupUser.where(group_id: group.id, is_member: true).count %></td>
           <td>
             <%= link_to "詳細", group_path(group), class: "btn btn-outline-main" %>
-            <%= link_to "グループ参加者の投稿一覧", group_page_group_path(group), class: "btn btn-outline-main" %>
+            <%= link_to "投稿一覧", group_page_group_path(group), class: "btn btn-outline-main" %>
           </td>
         </tr>
       <% end %>

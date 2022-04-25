@@ -1,3 +1,4 @@
+<div class="alert alert-warning">
 <div class="d-flex justify-content-center">
   <%= image_tag user.get_profile_image, size: '100x100' %>
 </div>
@@ -7,11 +8,11 @@
     <td><%= user.name %></td>
   </tr>
   <tr>
-    <th>フォロー数</th>
+    <th>フォロー</th>
     <td><%= link_to user.followings.count, followings_user_relationships_path(user) %></td>
   </tr>
   <tr>
-    <th>フォロワー数</th>
+    <th>フォロワー</th>
     <td><%= link_to user.followers.count, followers_user_relationships_path(user) %></td>
   </tr>
 </table>
@@ -29,4 +30,5 @@
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-main" %>
     <% end %>
   <% end %>
+</div>
 </div>
