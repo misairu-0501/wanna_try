@@ -25,6 +25,7 @@
 - ER図　URL：https://app.diagrams.net/#G14gjIOO7o34Tpafqh9qG6f4bi5i-ddFzC
 - テーブル定義書　URL：https://docs.google.com/spreadsheets/d/1C7vH_FNIQF06URT92Y8uDGY8vSHLzHhIhZEEBi95M5g/edit#gid=279355362
 - アプリケーション詳細設計　URL：https://docs.google.com/spreadsheets/d/1fJOSiiGbB5VXlmm8v6sY5XvW7r2TjIQGThIn1CZD99o/edit#gid=1416927552
+- テスト仕様書 URL：https://docs.google.com/spreadsheets/d/1kUdHlcRJeDTRatTGtYW-a373vKyRDitI/edit#gid=415388140
 
 ## 開発環境
 

@@ -61,3 +61,11 @@
 .font-kaushan {
   font-family: 'Kaushan', cursive, sans-serif;
 }
+
+//テーブル幅方向のスクロール
+.table-scrolling {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}

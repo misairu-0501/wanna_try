@@ -2,33 +2,33 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="alert alert-warning mt-3">投稿詳細</h2>
-      <table class="table">
+      <table class="table table-scrolling">
         <tr>
-          <th>タイトル</th>
+          <th nowrap>タイトル</th>
           <td><%= @post.title %></td>
         </tr>
         <tr>
-          <th>お名前</th>
+          <th nowrap>お名前</th>
           <td><%= @post.child.name %></td>
         </tr>
         <tr>
-          <th>年齢(写真の時点)</th>
+          <th nowrap>年齢(写真の時点)</th>
           <td><%= @post.age_calculation %>歳（<%= @post.shooting_date.strftime("%Y/%m/%d") %>時点）</td>
         </tr>
         <tr>
-          <th>投稿者</th>
+          <th nowrap>投稿者</th>
           <td><%= @post.user.name %></td>
         </tr>
         <tr>
-          <th>投稿日時</th>
+          <th nowrap>投稿日時</th>
           <td><%= @post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
         </tr>
         <tr>
-          <th>公開範囲</th>
+          <th nowrap>公開範囲</th>
           <td><%= Post.public_statuses_i18n[Post.public_statuses.key(@post.public_status)] %></td>
         </tr>
         <tr>
-          <th>説明</th>
+          <th nowrap>説明</th>
           <td><%=safe_join(@post.body.split("\n"),tag(:br))%></td>
         </tr>
       </table>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-6">
       <div class="mt-3">
-        <img><%= image_tag @post.get_post_image, width: "500px", height: "auto" %></img><br>
+        <img><%= image_tag @post.get_post_image, width: "500px", height: "auto", class: "img-fluid" %></img><br>
       </div>
       <!--いいね(非同期通信化)-->
       <span id="favorite_buttons_<%= @post.id %>" >
