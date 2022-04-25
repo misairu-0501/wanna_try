@@ -8,7 +8,7 @@
       </div>
 
       <%= form_with model: @group, url: groups_path, method: :post, local: true do |f| %>
-        <table class="table">
+        <table class="table table-responsive">
           <tr>
             <th><%= f.label :name, "グループ名" %></th>
             <td><%= f.text_field :name, placeholder: "グループ名を入力", class: "form-control" %></td>
