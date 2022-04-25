@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-lg-6 mx-auto mt-3">
       <div class="d-flex justify-content-center">
-        <img src="<%= asset_path('top_image.jpg') %>" alt="">
+        <img src="<%= asset_path('top_image.jpg') %>" class="img-fluid" alt="">
       </div>
     </div>
     <div class="col-lg-6 mx-auto mt-3">
-      <h1 class="font-kaushan text-center">Welcome to Wanna Try!</h1>
+      <h1 class="font-kaushan text-center" style="width: 100%; max-width: 100%;">Welcome to Wanna Try!</h1>
       <div class="alert alert-warning text-center">
         <p class="mt-3">自分の子供のおすすめを投稿したり</p>
         <p class="mt-3">他のご家庭のお子さんのおすすめを</p>
@@ -22,7 +22,7 @@
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-main btn-block" %>
       </div>
       <div class="mt-4 d-flex justify-content-center">
-        <%= link_to "ゲストログイン(閲覧)", guest_sign_in_path, method: :post, class: "btn btn-main btn-block" %>
+        <%= link_to "ゲストログイン(お試し)", guest_sign_in_path, method: :post, class: "btn btn-main btn-block" %>
       </div>
 
     </div>
