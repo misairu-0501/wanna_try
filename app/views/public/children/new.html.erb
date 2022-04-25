@@ -8,7 +8,7 @@
       </div>
 
       <%= form_with model: @child, url: children_path, method: :post, local: true do |f| %>
-        <table class="table">
+        <table class="table table-responsive">
           <tr>
             <th><%= f.label :name, "お名前" %></th>
             <td><%= f.text_field :name, placeholder: "お子さまのお名前", class: "form-control" %></td>
