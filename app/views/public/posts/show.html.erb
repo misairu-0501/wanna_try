@@ -28,10 +28,8 @@
           <td><%= Post.public_statuses_i18n[Post.public_statuses.key(@post.public_status)] %></td>
         </tr>
         <tr>
-          <th colspan="2">説明</th>
-        </tr>
-        <tr>
-          <td colspan="2"><%=safe_join(@post.body.split("\n"),tag(:br))%></td>
+          <th>説明</th>
+          <td><%=safe_join(@post.body.split("\n"),tag(:br))%></td>
         </tr>
       </table>
 
