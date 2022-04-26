@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>新規投稿</h2>
+  <h2 class="mt-3">新規投稿</h2>
   <div class="row">
     <div class="col-md-8 mx-auto">
 
@@ -14,12 +14,12 @@
             <td><%= f.text_field :title, placeholder: "投稿のタイトル", class: "form-control" %></td>
           </tr>
           <tr>
-            <th><%= f.label :child_id, "お名前" %></th>
-            <td><%= f.select :child_id, options_from_collection_for_select(current_user.children.all, :id, :name), {}, class: "form-control" %></td>
-          </tr>
-          <tr>
             <th><%= f.label :genre_id, "ジャンル" %></th>
             <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {}, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :child_id, "お名前" %></th>
+            <td><%= f.select :child_id, options_from_collection_for_select(current_user.children.all, :id, :name), {}, class: "form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :shooting_date, "写真撮影日" %></th>
