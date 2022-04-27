@@ -64,7 +64,7 @@ class Public::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    Group.where(owner_id: @user.id).destroy_all
+    # Group.where(owner_id: @user.id).destroy_all
     @user.destroy
     flash[:notice] = "退会しました"
     redirect_to root_path
