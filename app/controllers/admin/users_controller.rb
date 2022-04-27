@@ -29,6 +29,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    Group.where(owner_id: @user.id).destroy_all
     @user.destroy
     flash[:notice] = "#{@user.name}さんを退会させました"
     redirect_to admin_users_path
