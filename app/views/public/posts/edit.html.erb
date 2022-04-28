@@ -15,11 +15,11 @@
           </tr>
           <tr>
             <th><%= f.label :child_id, "お名前" %></th>
-            <td><%= f.select :child_id, options_from_collection_for_select(current_user.children.all, :id, :name), {}, class: "form-control" %></td>
+            <td><%= f.select :child_id, options_from_collection_for_select(current_user.children.all, :id, :name, @post.child_id), {}, class: "form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :genre_id, "ジャンル" %></th>
-            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {}, class:"form-control" %></td>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @post.genre_id), {}, class:"form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :shooting_date, "写真撮影日" %></th>
