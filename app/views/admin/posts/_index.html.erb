@@ -1,0 +1,28 @@
+<table class="table table-scrolling" width="100%">
+  <tr>
+    <th class="table-heading" width="10%">投稿ID</th>
+    <th class="table-heading" width="10%"></th>
+    <th class="table-heading" width="20%">投稿者</th>
+    <th class="table-heading" width="30%">タイトル</th>
+    <th class="table-heading" width="10%">説明</th>
+    <th class="table-heading" width="10%">感情分析スコア</th>
+    <th class="table-heading" width="10%"></th>
+  </tr>
+  <% posts.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
+      <td><%= link_to post.user.name, admin_user_path(post.user) %></td>
+      <td><%= post.title %></td>
+      <td><%= post.body.truncate(20) %></td>
+      <td><h2><%= render 'public/posts/emotion_score', target: post %></h2></td>
+      <td>
+        <%= link_to "詳細", admin_post_path(post), class: "btn btn-outline-main" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate posts %>
+</div>

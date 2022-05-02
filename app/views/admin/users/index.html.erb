@@ -2,10 +2,10 @@
   <% if params[:user_name] %>
     <h2 class="mt-3">ユーザー検索結果  ～検索ワード"<%= params[:user_name] %>"～</h2>
   <% else %>
-    <h2 class="mt-3">ユーザー一覧</h2>
+    <h2 class="mt-3">ユーザー一覧（全<%= @users.total_count %>ユーザー）</h2>
   <% end %>
   <div class="row">
-    <div class="col-lg-8 mx-auto">
+    <div class="col-md-8 mx-auto">
       <div class="mb-3">
         <%= render 'admin/users/user_search' %>
       </div>

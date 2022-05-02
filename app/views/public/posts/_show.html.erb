@@ -1,0 +1,42 @@
+<table class="table table-scrolling" width="100%">
+  <tr>
+    <th width="30%">タイトル</th>
+    <td width="70%"><%= post.title %></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+    <td><%= post.genre.name %></td>
+  </tr>
+  <tr>
+    <th>お名前</th>
+    <td><%= post.child.name %></td>
+  </tr>
+  <tr>
+    <th>年齢（写真の時点）</th>
+    <td><%= post.age_calculation %>歳（<%= post.shooting_date.strftime("%Y/%m/%d") %>時点）</td>
+  </tr>
+  <tr>
+    <th nowrap>投稿者</th>
+    <td><%= post.user.name %></td>
+  </tr>
+  <tr>
+    <th>投稿日時</th>
+    <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+  </tr>
+  <tr>
+    <th>公開範囲</th>
+    <td><%= Post.public_statuses_i18n[Post.public_statuses.key(post.public_status)] %></td>
+  </tr>
+  <tr>
+    <th>説明</th>
+    <td><%=safe_join(post.body.split("\n"),tag(:br))%></td>
+  </tr>
+  <tr>
+    <th>感情分析スコア<br>（説明内容より判断）</th>
+    <td>
+      <h2>
+        <%= render 'public/posts/emotion_score', target: post %>
+      </h2>
+    </td>
+  </tr>
+</table>

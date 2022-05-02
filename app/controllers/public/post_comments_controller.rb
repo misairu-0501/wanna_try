@@ -5,6 +5,8 @@ class Public::PostCommentsController < ApplicationController
     comment = PostComment.new(post_comment_params)
     comment.user_id = current_user.id
     comment.post_id = @post.id
+    # Google Natural Language APIで感情分析を実施
+    comment.score = Language.get_data(post_comment_params[:comment])
     comment.save
     #非同期通信(@postをjsファイルに渡す)
     # redirect_to request.referer
