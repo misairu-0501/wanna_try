@@ -1,7 +1,20 @@
 <div class="container">
-  <h2 class="mt-3">コメント一覧</h2>
+  <div class="mt-3">
+    <% if params[:positive] %>
+      <h2>コメント一覧（全<%= @post_comments.total_count %>件）"スコア高い順"</h2>
+    <% elsif params[:negative] %>
+      <h2>コメント一覧（全<%= @post_comments.total_count %>件）"スコア低い順"</h2>
+    <% else %>
+      <h2>コメント一覧（全<%= @post_comments.total_count %>件）</h2>
+    <% end %>
+  </div>
   <div class="row">
     <div class="col-md-12 mx-auto">
+      <div class="mb-3">
+        <span>感情分析スコア順</span>|
+        <%= link_to "高い", admin_post_comments_path(positive: "true") %>|
+        <%= link_to "低い", admin_post_comments_path(negative: "true") %>
+      </div>
       <%= render 'admin/post_comments/all_comments', post_comments: @post_comments %>
     </div>
   </div>

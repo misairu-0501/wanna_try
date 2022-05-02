@@ -1,7 +1,7 @@
-<table class="table table-scrolling">
+<table class="table table-scrolling" width="100%">
   <tr>
-    <th>タイトル</th>
-    <td><%= post.title %></td>
+    <th width="30%">タイトル</th>
+    <td width="70%"><%= post.title %></td>
   </tr>
   <tr>
     <th>ジャンル</th>
@@ -12,7 +12,7 @@
     <td><%= post.child.name %></td>
   </tr>
   <tr>
-    <th>年齢(写真の時点)</th>
+    <th>年齢（写真の時点）</th>
     <td><%= post.age_calculation %>歳（<%= post.shooting_date.strftime("%Y/%m/%d") %>時点）</td>
   </tr>
   <tr>
@@ -30,5 +30,13 @@
   <tr>
     <th>説明</th>
     <td><%=safe_join(post.body.split("\n"),tag(:br))%></td>
+  </tr>
+  <tr>
+    <th>感情分析スコア<br>（説明内容より判断）</th>
+    <td>
+      <h2>
+        <%= render 'public/posts/emotion_score', target: post %>
+      </h2>
+    </td>
   </tr>
 </table>

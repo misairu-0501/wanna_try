@@ -11,6 +11,8 @@ class Public::PostsController < ApplicationController
     @user = current_user
     @post = Post.new(post_params)
     @post.user_id = @user.id
+    # Google Natural Language APIで感情分析を実施
+    @post.score = Language.get_data(post_params[:body])
     if @post.save
       flash[:notice] = "投稿を作成しました"
       redirect_to user_path(@user)
@@ -26,6 +28,8 @@ class Public::PostsController < ApplicationController
   def update
     @user = current_user
     @post = Post.find(params[:id])
+    # Google Natural Language APIで感情分析を実施
+    @post.score = Language.get_data(post_params[:body])
     if @post.update(post_params)
       flash[:notice] = "投稿を更新しました"
       redirect_to post_path(@post)

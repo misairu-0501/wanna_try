@@ -1,6 +1,12 @@
 class Admin::PostCommentsController < ApplicationController
   def index
-    @post_comments = PostComment.page(params[:page]).per(10)
+    if params[:positive]
+      @post_comments = PostComment.positive.page(params[:page]).per(10)
+    elsif params[:negative]
+      @post_comments = PostComment.negative.page(params[:page]).per(10)
+    else
+      @post_comments = PostComment.page(params[:page]).per(10)
+    end
   end
 
   def destroy

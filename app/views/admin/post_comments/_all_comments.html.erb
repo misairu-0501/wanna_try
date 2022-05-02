@@ -1,19 +1,19 @@
-<table class="table table-scrolling">
+<table class="table table-scrolling" width="100%">
   <tr>
-    <th class="table-heading">コメントID</th>
-    <th class="table-heading"></th>
-    <th class="table-heading">コメント者</th>
-    <th class="table-heading">コメント</th>
-    <th class="table-heading">感情分析</th>
-    <th class="table-heading"></th>
+    <th class="table-heading" width="10%">コメントID</th>
+    <th class="table-heading" width="10%"></th>
+    <th class="table-heading" width="20%">コメント者</th>
+    <th class="table-heading" width="40%">コメント</th>
+    <th class="table-heading" width="10%">感情分析スコア</th>
+    <th class="table-heading" width="10%"></th>
   </tr>
   <% post_comments.each do |post_comment| %>
     <tr>
       <td><%= post_comment.id %></td>
       <td><%= image_tag post_comment.user.get_profile_image, size: '50x50' %></td>
-      <td><%= post_comment.user.name %></td>
+      <td><%= link_to post_comment.user.name, admin_user_path(post_comment.user) %></td>
       <td><%= post_comment.comment.truncate(20) %></td>
-      <td>未実装</td>
+      <td><h2><%= render 'public/posts/emotion_score', target: post_comment %></h2></td>
       <td>
         <%= link_to "詳細", admin_post_path(post_comment.post_id), class: "btn btn-outline-main" %>
       </td>

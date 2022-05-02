@@ -1,0 +1,30 @@
+<% if target.score == nil %>
+  <i class="fas fa-question-circle"></i>
+<% elsif target.score >=0.5 %>
+  <span class="text-primary">
+    <i class="fas fa-grin-beam"></i>
+  </span>
+<% elsif target.score < 0.5 && target.score > 0 %>
+  <span class="text-success">
+    <i class="fas fa-smile"></i>
+  </span>
+<% elsif target.score == 0 %>
+  <span class="text-secondary">
+    <i class="fas fa-meh"></i>
+  </span>
+<% elsif target.score < 0 && target.score > -0.5 %>
+  <span class="text-warning">
+    <i class="fas fa-frown"></i>
+  </span>
+<% elsif target.score <= -0.5 %>
+  <span class="text-danger">
+    <i class="fas fa-tired"></i>
+  </span>
+<% else %>
+<% end %>
+
+<% if target.score == nil %>
+  (-)
+<% else %>
+  (<%= target.score %>)
+<% end %>
