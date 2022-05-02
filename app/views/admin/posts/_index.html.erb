@@ -1,0 +1,28 @@
+<table class="table table-scrolling">
+  <tr>
+    <th class="table-heading">投稿ID</th>
+    <th class="table-heading"></th>
+    <th class="table-heading">投稿者</th>
+    <th class="table-heading">タイトル</th>
+    <th class="table-heading">説明</th>
+    <th class="table-heading">感情分析</th>
+    <th class="table-heading"></th>
+  </tr>
+  <% posts.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.title %></td>
+      <td><%= post.body.truncate(20) %></td>
+      <td>未実装</td>
+      <td>
+        <%= link_to "詳細", admin_post_path(post), class: "btn btn-outline-main" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate posts %>
+</div>

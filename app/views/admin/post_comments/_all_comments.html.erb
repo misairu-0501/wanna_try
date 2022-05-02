@@ -1,0 +1,26 @@
+<table class="table table-scrolling">
+  <tr>
+    <th class="table-heading">コメントID</th>
+    <th class="table-heading"></th>
+    <th class="table-heading">コメント者</th>
+    <th class="table-heading">コメント</th>
+    <th class="table-heading">感情分析</th>
+    <th class="table-heading"></th>
+  </tr>
+  <% post_comments.each do |post_comment| %>
+    <tr>
+      <td><%= post_comment.id %></td>
+      <td><%= image_tag post_comment.user.get_profile_image, size: '50x50' %></td>
+      <td><%= post_comment.user.name %></td>
+      <td><%= post_comment.comment.truncate(20) %></td>
+      <td>未実装</td>
+      <td>
+        <%= link_to "詳細", admin_post_path(post_comment.post_id), class: "btn btn-outline-main" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate post_comments %>
+</div>
