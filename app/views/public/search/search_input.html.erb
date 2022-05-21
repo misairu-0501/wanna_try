@@ -25,13 +25,16 @@
             <th>性別</th>
             <td>
               <span class="pl-3">
-                <%= f.radio_button :gender, "boy" %>男の子
+                <%= f.radio_button :gender, "boy" %>
+                <%= f.label(:gender, "男の子", value: "boy") %>
               </span>
               <span class="pl-3">
-                <%= f.radio_button :gender, "girl" %>女の子
+                <%= f.radio_button :gender, "girl" %>
+                <%= f.label(:gender, "女の子", value: "girl") %>
               </span>
               <span class="pl-3">
-                <%= f.radio_button :gender, "all", checked: true %>全て
+                <%= f.radio_button :gender, "all", checked: true %>
+                <%= f.label(:gender, "全て", value: "all") %>
               </span>
             </td>
           </tr>

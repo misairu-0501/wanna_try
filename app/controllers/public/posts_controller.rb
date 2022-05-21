@@ -88,7 +88,7 @@ class Public::PostsController < ApplicationController
     if @post.public_status == 2 && @post.user != current_user
       flash[:alert] = "公開範囲が「自分のみ」の他人の投稿は閲覧できません。"
       redirect_to my_page_user_path(current_user)
-    elsif @post.public_status == 1 && (same_group?(current_user.id, @post.user_id) == false)
+    elsif @post.public_status == 1 && (same_group?(current_user.id, @post.user_id) == false) && @post.user != current_user
       flash[:alert] = "公開範囲が「グループまで」で、同じグループに所属していない人の投稿は閲覧できません"
       redirect_to my_page_user_path(current_user)
     end
