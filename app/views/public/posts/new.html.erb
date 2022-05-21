@@ -38,15 +38,15 @@
             <td>
               <span class="pl-3">
                 <%= f.radio_button :public_status, "0" %>
-                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(0)] %>
+                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(0)], value: "0" %>
               </span>
               <span class="pl-3">
                 <%= f.radio_button :public_status, "1" %>
-                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(1)] %>
+                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(1)], value: "1" %>
               </span>
               <span class="pl-3">
                 <%= f.radio_button :public_status, "2" %>
-                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(2)] %>
+                <%= f.label :public_status, Post.public_statuses_i18n[Post.public_statuses.key(2)], value: "2" %>
               </span>
             </td>
           </tr>
